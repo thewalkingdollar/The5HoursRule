@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  if (window.lucide) lucide.createIcons();
+  console.log('5H Attack loaded with themes');
 
   // --- THEME SWITCHER ---
   const html = document.documentElement;
@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('5h_theme') || 'attack';
   
   function applyTheme(theme) {
+    console.log('Applying theme:', theme);
     html.setAttribute('data-theme', theme);
     localStorage.setItem('5h_theme', theme);
     themeBtns.forEach(btn => {
@@ -15,16 +16,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.lucide) lucide.createIcons();
   }
 
-  applyTheme(savedTheme);
-
-  themeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const theme = btn.dataset.themeBtn;
-      applyTheme(theme);
-      // haptic feedback on mobile
-      if (navigator.vibrate) navigator.vibrate(20);
+  if (themeBtns.length > 0) {
+    applyTheme(savedTheme);
+    themeBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const theme = btn.dataset.themeBtn;
+        applyTheme(theme);
+        if (navigator.vibrate) navigator.vibrate(20);
+      });
     });
-  });
+    console.log('Theme switcher hooked:', themeBtns.length, 'buttons');
+  } else {
+    console.error('No theme buttons found - check index.html has data-theme-btn');
+  }
+
+  // Icons
+  if (window.lucide) lucide.createIcons();
 
   // Mobile menu
   const menuBtn = document.getElementById('mobile-menu-btn');
@@ -53,9 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let timerInterval = null;
   let isRunning = false;
 
-  const savedRemaining = localStorage.getItem('5h_remaining');
-  if (savedRemaining) {
-    const parsed = parseInt(savedRemaining, 10);
+  const saved = localStorage.getItem('5h_remaining');
+  if (saved) {
+    const parsed = parseInt(saved, 10);
     if (!isNaN(parsed) && parsed > 0 && parsed <= totalSeconds) remainingSeconds = parsed;
   }
 
@@ -118,10 +126,13 @@ document.addEventListener('DOMContentLoaded', () => {
     setButtonState('idle');
   }
 
-  if (startBtn) startBtn.addEventListener('click', startPause);
+  if (startBtn) {
+    startBtn.addEventListener('click', startPause);
+    console.log('Start button hooked');
+  }
   if (resetBtn) resetBtn.addEventListener('click', reset);
   updateDisplay();
-  if (localStorage.getItem('5h_running') === 'true' && remainingSeconds < totalSeconds && remainingSeconds > 0) {
+  if (localStorage.getItem('5h_running') === 'true' && remainingSeconds > 0 && remainingSeconds < totalSeconds) {
     startPause();
   }
 
@@ -138,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
   }
   let nextId = tasks.length ? Math.max(...tasks.map(t=>t.id))+1 : 6;
-  function saveTasks() { localStorage.setItem('5h_tasks', JSON.stringify(tasks)); }
+  function save() { localStorage.setItem('5h_tasks', JSON.stringify(tasks)); }
   function render() {
     const list = document.getElementById('checklist');
     if (!list) return;
@@ -159,17 +170,17 @@ document.addEventListener('DOMContentLoaded', () => {
       cb.addEventListener('change', e => {
         const id = parseInt(e.target.id.split('-')[1]);
         const task = tasks.find(x=>x.id===id);
-        if (task) { task.done = e.target.checked; saveTasks(); render(); }
+        if (task) { task.done = e.target.checked; save(); render(); }
       });
     });
     list.querySelectorAll('.delete-task').forEach(btn => {
       btn.addEventListener('click', e => {
         e.preventDefault(); e.stopPropagation();
         tasks = tasks.filter(x=>x.id!==parseInt(btn.dataset.id));
-        saveTasks(); render();
+        save(); render();
       });
     });
-    saveTasks();
+    save();
   }
   const addBtn = document.getElementById('add-task');
   if (addBtn) addBtn.addEventListener('click', () => {
