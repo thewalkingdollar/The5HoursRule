@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="attack">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,27 +9,36 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
   <!-- Header -->
   <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center gap-2">
-        <div class="w-8 h-8 bg-gradient-to-br from-red-600 to-amber-500 rounded-lg flex items-center justify-center">
+        <div class="w-8 h-8 bg-gradient-to-br from-red-600 to-amber-500 rounded-lg flex items-center justify-center theme-logo">
           <i data-lucide="zap" class="w-5 h-5 text-white"></i>
         </div>
         <span class="font-display font-bold text-xl text-slate-900">5H Attack</span>
       </div>
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#concept" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Concept</a>
-        <a href="#why" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Why 5 Hours</a>
-        <a href="#apply" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Apply It</a>
-        <a href="#tracker" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Tracker</a>
+      <div class="flex items-center gap-4">
+        <div class="hidden md:flex items-center gap-8 mr-2">
+          <a href="#concept" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Concept</a>
+          <a href="#why" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Why 5 Hours</a>
+          <a href="#apply" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Apply It</a>
+          <a href="#tracker" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Tracker</a>
+        </div>
+        <!-- Theme Switcher -->
+        <div class="flex items-center gap-1 p-1 bg-slate-100 rounded-full border border-slate-200" id="theme-switcher">
+          <button data-theme-btn="attack" class="theme-btn active w-8 h-8 rounded-full bg-gradient-to-br from-red-600 to-amber-500 flex items-center justify-center shadow-sm" title="Attack Red - Default"><span class="w-2 h-2 bg-white rounded-full"></span></button>
+          <button data-theme-btn="midnight" class="theme-btn w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center hover:scale-110 transition" title="Midnight Ops"><i data-lucide="moon" class="w-4 h-4 text-white"></i></button>
+          <button data-theme-btn="desert" class="theme-btn w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center hover:scale-110 transition" title="Desert Storm"><i data-lucide="sun" class="w-4 h-4 text-white"></i></button>
+          <button data-theme-btn="arctic" class="theme-btn w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center hover:scale-110 transition" title="Arctic Focus"><i data-lucide="snowflake" class="w-4 h-4 text-white"></i></button>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-slate-100">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
       </div>
-      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-slate-100">
-        <i data-lucide="menu" class="w-5 h-5"></i>
-      </button>
     </nav>
     <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white">
       <div class="px-4 py-3 space-y-2">
@@ -44,8 +53,8 @@
   <!-- Hero Section -->
   <section class="hero-gradient text-white relative overflow-hidden">
     <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-0 left-0 w-96 h-96 bg-red-500 rounded-full filter blur-3xl"></div>
-      <div class="absolute bottom-0 right-0 w-96 h-96 bg-amber-500 rounded-full filter blur-3xl"></div>
+      <div class="absolute top-0 left-0 w-96 h-96 bg-red-500 rounded-full filter blur-3xl hero-blur-1"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-amber-500 rounded-full filter blur-3xl hero-blur-2"></div>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-32 relative">
       <div class="max-w-4xl">
@@ -61,7 +70,7 @@
           Seize yesterday's information. Execute in today's first 5 hours. Win before distractions start.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#tracker" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-semibold rounded-xl shadow-lg shadow-red-500/25 transition-all hover:scale-105">
+          <a href="#tracker" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-semibold rounded-xl shadow-lg shadow-red-500/25 transition-all hover:scale-105 theme-cta">
             <i data-lucide="rocket" class="w-5 h-5"></i>
             Start Your 5 Hours
           </a>
@@ -75,11 +84,11 @@
   </section>
 
   <!-- What is the 5 Hour Rule? -->
-  <section id="concept" class="py-16 sm:py-24 bg-white">
+  <section id="concept" class="py-16 sm:py-24 bg-white theme-section">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div>
-          <div class="inline-block px-4 py-1.5 bg-red-50 text-red-700 rounded-full text-sm font-semibold mb-4">
+          <div class="inline-block px-4 py-1.5 bg-red-50 text-red-700 rounded-full text-sm font-semibold mb-4 theme-badge">
             The Core Concept
           </div>
           <h2 class="font-display text-4xl sm:text-5xl font-bold text-slate-900 mb-6">
@@ -93,14 +102,14 @@
               Information decays. Insights fade. Opportunities close. By attacking within 5 hours, you convert yesterday's intel into today's momentum—before email, meetings, and noise hijack your focus.
             </p>
             <p class="text-slate-900 font-medium">
-              This isn’t about doing more. It’s about doing what matters, first.
+              This isn't about doing more. It's about doing what matters, first.
             </p>
           </div>
         </div>
         <div class="relative">
-          <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 sm:p-10 text-white shadow-2xl">
+          <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 sm:p-10 text-white shadow-2xl theme-card-dark">
             <div class="flex items-center gap-3 mb-6">
-              <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-amber-500 rounded-xl flex items-center justify-center">
+              <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-amber-500 rounded-xl flex items-center justify-center theme-icon">
                 <i data-lucide="clock" class="w-6 h-6"></i>
               </div>
               <h3 class="font-display text-2xl font-bold">The 5 Hour Window</h3>
@@ -110,14 +119,21 @@
                 <i data-lucide="check-circle-2" class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"></i>
                 <div>
                   <p class="font-semibold">6:00 AM - 11:00 AM</p>
-                  <p class="text-sm text-slate-300">Peak cognitive hours. Zero distractions. Pure execution.</p>
+                  <p class="text-sm text-slate-300">Deep work, zero distractions</p>
                 </div>
               </div>
               <div class="flex items-start gap-3">
-                <i data-lucide="x-circle" class="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0"></i>
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"></i>
                 <div>
-                  <p class="font-semibold">After 11:00 AM</p>
-                  <p class="text-sm text-slate-300">Decision fatigue sets in. Reactive mode begins.</p>
+                  <p class="font-semibold">Yesterday's Intel → Today's Execution</p>
+                  <p class="text-sm text-slate-300">Convert information to action</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"></i>
+                <div>
+                  <p class="font-semibold">Win Before Noon</p>
+                  <p class="text-sm text-slate-300">80% of impact in 20% of time</p>
                 </div>
               </div>
             </div>
@@ -127,70 +143,51 @@
     </div>
   </section>
 
-  <!-- Why 5 Hours? -->
-  <section id="why" class="py-16 sm:py-24 bg-slate-50">
+  <!-- Why 5 Hours -->
+  <section id="why" class="py-16 sm:py-24 bg-slate-50 theme-section-alt">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="inline-block px-4 py-1.5 bg-amber-50 text-amber-700 rounded-full text-sm font-semibold mb-4">
-          The Advantage
+        <div class="inline-block px-4 py-1.5 bg-amber-50 text-amber-700 rounded-full text-sm font-semibold mb-4 theme-badge">
+          The Science
         </div>
         <h2 class="font-display text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
           Why 5 Hours?
         </h2>
         <p class="text-lg text-slate-600">
-          Science, psychology, and elite performers all point to the same truth: your first hours decide your day.
+          Your brain has a limited window of peak cognitive performance. Use it or lose it.
         </p>
       </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="card-hover bg-white rounded-2xl p-8 border border-slate-200">
-          <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-5">
-            <i data-lucide="trending-up" class="w-6 h-6 text-red-600"></i>
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 card-hover theme-card">
+          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 theme-icon-light">
+            <i data-lucide="brain" class="w-6 h-6 text-blue-600"></i>
           </div>
-          <h3 class="font-display text-xl font-bold text-slate-900 mb-3">Momentum</h3>
-          <p class="text-slate-600 leading-relaxed">
-            Early wins compound. Attack mode in hour 1 creates unstoppable momentum for hours 2-5.
-          </p>
+          <h3 class="font-display text-xl font-bold text-slate-900 mb-2">Peak Cognition</h3>
+          <p class="text-slate-600">Cortisol and focus peak in early morning. Willpower is highest before decision fatigue sets in.</p>
         </div>
-
-        <div class="card-hover bg-white rounded-2xl p-8 border border-slate-200">
-          <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-5">
-            <i data-lucide="brain" class="w-6 h-6 text-amber-600"></i>
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 card-hover theme-card">
+          <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-4 theme-icon-light">
+            <i data-lucide="timer" class="w-6 h-6 text-red-600"></i>
           </div>
-          <h3 class="font-display text-xl font-bold text-slate-900 mb-3">Clarity</h3>
-          <p class="text-slate-600 leading-relaxed">
-            Morning brain has 2-3x higher willpower. Pre-frontal cortex is fresh. Decisions are cleaner.
-          </p>
+          <h3 class="font-display text-xl font-bold text-slate-900 mb-2">Information Half-Life</h3>
+          <p class="text-slate-600">Intel loses 50% value every 24 hours. Act within 5 hours or it decays into noise.</p>
         </div>
-
-        <div class="card-hover bg-white rounded-2xl p-8 border border-slate-200">
-          <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-5">
-            <i data-lucide="shield-off" class="w-6 h-6 text-green-600"></i>
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 card-hover theme-card">
+          <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center mb-4 theme-icon-light">
+            <i data-lucide="shield" class="w-6 h-6 text-amber-600"></i>
           </div>
-          <h3 class="font-display text-xl font-bold text-slate-900 mb-3">Anti-Procrastination</h3>
-          <p class="text-slate-600 leading-relaxed">
-            Information decay is real. After 24hrs, retention drops 70%. Acting in 5 hours kills hesitation.
-          </p>
-        </div>
-
-        <div class="card-hover bg-white rounded-2xl p-8 border border-slate-200">
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-5">
-            <i data-lucide="swords" class="w-6 h-6 text-blue-600"></i>
-          </div>
-          <h3 class="font-display text-xl font-bold text-slate-900 mb-3">Competitive Edge</h3>
-          <p class="text-slate-600 leading-relaxed">
-            While others check email, you’ve already executed. You’re operating 5 hours ahead of your market.
-          </p>
+          <h3 class="font-display text-xl font-bold text-slate-900 mb-2">Distraction Shield</h3>
+          <p class="text-slate-600">Before 11 AM, 73% fewer interruptions. After that, meetings and messages hijack you.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- How to Apply It -->
-  <section id="apply" class="py-16 sm:py-24 bg-white">
+  <!-- How to Apply It - No horizontal scroll, fully in view -->
+  <section id="apply" class="py-16 sm:py-24 bg-white overflow-hidden theme-section">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="inline-block px-4 py-1.5 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold mb-4">
+        <div class="inline-block px-4 py-1.5 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold mb-4 theme-badge">
           The Playbook
         </div>
         <h2 class="font-display text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
@@ -201,76 +198,68 @@
         </p>
       </div>
 
-      <div class="max-w-4xl mx-auto">
-        <div class="space-y-6">
-          <div class="card-hover flex gap-4 sm:gap-6 p-5 sm:p-8 bg-slate-50 rounded-2xl border border-slate-200 w-full max-w-full">
+      <div class="max-w-4xl mx-auto w-full">
+        <div class="space-y-5">
+          <div class="card-hover flex gap-4 sm:gap-6 p-5 sm:p-8 bg-slate-50 rounded-2xl border border-slate-200 w-full max-w-full overflow-hidden theme-card">
             <div class="flex-shrink-0">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-slate-900 text-white rounded-xl flex items-center justify-center font-display text-lg sm:text-xl font-bold">
-                1
-              </div>
+              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-slate-900 text-white rounded-xl flex items-center justify-center font-display text-lg sm:text-xl font-bold theme-step">1</div>
             </div>
             <div class="flex-1 min-w-0">
               <h3 class="font-display text-xl sm:text-2xl font-bold text-slate-900 mb-2 break-words">Review Yesterday's Intel</h3>
-              <p class="text-slate-600 leading-relaxed mb-3">
+              <p class="text-slate-600 leading-relaxed mb-3 text-sm sm:text-base">
                 First 15 minutes: scan notes, emails, meetings, and insights from yesterday. Capture anything actionable.
               </p>
               <div class="inline-flex items-center gap-2 text-sm text-slate-500">
-                <i data-lucide="lightbulb" class="w-4 h-4"></i>
-                <span>Keep a “Parking Lot” doc for all intel</span>
+                <i data-lucide="lightbulb" class="w-4 h-4 flex-shrink-0"></i>
+                <span class="break-words">Keep a "Parking Lot" doc for all intel</span>
               </div>
             </div>
           </div>
 
-          <div class="card-hover flex gap-4 sm:gap-6 p-5 sm:p-8 bg-slate-50 rounded-2xl border border-slate-200 w-full max-w-full overflow-hidden">
+          <div class="card-hover flex gap-4 sm:gap-6 p-5 sm:p-8 bg-slate-50 rounded-2xl border border-slate-200 w-full max-w-full overflow-hidden theme-card">
             <div class="flex-shrink-0">
-              <div class="w-12 h-12 bg-slate-900 text-white rounded-xl flex items-center justify-center font-display text-xl font-bold">
-                2
-              </div>
+              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-slate-900 text-white rounded-xl flex items-center justify-center font-display text-lg sm:text-xl font-bold theme-step">2</div>
             </div>
             <div class="flex-1 min-w-0">
               <h3 class="font-display text-xl sm:text-2xl font-bold text-slate-900 mb-2 break-words">Prioritize Ruthlessly</h3>
-              <p class="text-slate-600 leading-relaxed mb-3">
+              <p class="text-slate-600 leading-relaxed mb-3 text-sm sm:text-base">
                 Rank by impact: What moves revenue? What unblocks others? What expires soon? Pick your top 3 only.
               </p>
               <div class="inline-flex items-center gap-2 text-sm text-slate-500">
-                <i data-lucide="target" class="w-4 h-4"></i>
-                <span>Impact > Urgency > Easy wins</span>
+                <i data-lucide="target" class="w-4 h-4 flex-shrink-0"></i>
+                <span class="break-words">Impact > Urgency > Easy wins</span>
               </div>
             </div>
           </div>
 
-          <div class="card-hover flex gap-4 sm:gap-6 p-5 sm:p-8 bg-slate-50 rounded-2xl border border-slate-200 w-full max-w-full overflow-hidden">
+          <div class="card-hover flex gap-4 sm:gap-6 p-5 sm:p-8 bg-slate-50 rounded-2xl border border-slate-200 w-full max-w-full overflow-hidden theme-card">
             <div class="flex-shrink-0">
-              <div class="w-12 h-12 bg-slate-900 text-white rounded-xl flex items-center justify-center font-display text-xl font-bold">
-                3
-              </div>
+              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-slate-900 text-white rounded-xl flex items-center justify-center font-display text-lg sm:text-xl font-bold theme-step">3</div>
             </div>
             <div class="flex-1 min-w-0">
               <h3 class="font-display text-xl sm:text-2xl font-bold text-slate-900 mb-2 break-words">Execute Before Distractions</h3>
-              <p class="text-slate-600 leading-relaxed mb-3">
+              <p class="text-slate-600 leading-relaxed mb-3 text-sm sm:text-base">
                 No email. No Slack. No social. Phone on airplane mode. Deep work on priority #1 until complete.
               </p>
               <div class="inline-flex items-center gap-2 text-sm text-slate-500">
-                <i data-lucide="shield" class="w-4 h-4"></i>
-                <span>Defend your first 5 hours like a vault</span>
+                <i data-lucide="shield" class="w-4 h-4 flex-shrink-0"></i>
+                <span class="break-words">Defend your first 5 hours like a vault</span>
               </div>
             </div>
           </div>
 
-          <div class="card-hover flex gap-4 sm:gap-6 p-5 sm:p-8 bg-slate-50 rounded-2xl border border-slate-200 w-full max-w-full overflow-hidden">
+          <div class="card-hover flex gap-4 sm:gap-6 p-5 sm:p-8 bg-slate-50 rounded-2xl border border-slate-200 w-full max-w-full overflow-hidden theme-card">
             <div class="flex-shrink-0">
-              <div class="w-12 h-12 bg-slate-900 text-white rounded-xl flex items-center justify-center font-display text-xl font-bold">
-                4
-              </div>
+              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-slate-900 text-white rounded-xl flex items-center justify-center font-display text-lg sm:text-xl font-bold theme-step">4</div>
             </div>
             <div class="flex-1 min-w-0">
               <h3 class="font-display text-xl sm:text-2xl font-bold text-slate-900 mb-2 break-words">Log & Reset</h3>
-              <p class="text-slate-600 leading-relaxed mb-3">
+              <p class="text-slate-600 leading-relaxed mb-3 text-sm sm:text-base">
                 End of hour 5: document what you shipped. Capture new intel for tomorrow. Clear the deck.
               </p>
               <div class="inline-flex items-center gap-2 text-sm text-slate-500">
-                <i data-lucide="repeat" class="w-4 h-4"></i>
-                <span>Compound daily: 3 actions x 250 days = 750 wins</span>
+                <i data-lucide="repeat" class="w-4 h-4 flex-shrink-0"></i>
+                <span class="break-words">Compound daily: 3 actions x 250 days = 750 wins</span>
               </div>
             </div>
           </div>
@@ -280,10 +269,10 @@
   </section>
 
   <!-- Daily Tracker -->
-  <section id="tracker" class="py-16 sm:py-24 bg-slate-50">
+  <section id="tracker" class="py-16 sm:py-24 bg-slate-50 theme-section-alt">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-12">
-        <div class="inline-block px-4 py-1.5 bg-red-50 text-red-700 rounded-full text-sm font-semibold mb-4">
+        <div class="inline-block px-4 py-1.5 bg-red-50 text-red-700 rounded-full text-sm font-semibold mb-4 theme-badge">
           Live Dashboard
         </div>
         <h2 class="font-display text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
@@ -295,9 +284,9 @@
       </div>
 
       <div class="max-w-4xl mx-auto">
-        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden theme-tracker-card">
           <!-- Timer Header -->
-          <div class="bg-gradient-to-r from-slate-900 to-slate-800 text-white p-6 sm:p-8">
+          <div class="bg-gradient-to-r from-slate-900 to-slate-800 text-white p-6 sm:p-8 theme-tracker-header">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
               <div>
                 <p class="text-sm text-slate-300 mb-1" id="current-date">Loading...</p>
@@ -311,12 +300,12 @@
                 <svg class="w-20 h-20 transform -rotate-90">
                   <circle cx="40" cy="40" r="36" stroke="currentColor" stroke-width="4" fill="none" class="text-slate-700"></circle>
                   <circle id="progress-ring" cx="40" cy="40" r="36" stroke="currentColor" stroke-width="4" fill="none" 
-                    class="text-red-500 progress-ring" stroke-dasharray="226.19" stroke-dashoffset="0" stroke-linecap="round"></circle>
+                    class="text-red-500 progress-ring theme-progress-ring" stroke-dasharray="226.19" stroke-dashoffset="0" stroke-linecap="round"></circle>
                 </svg>
               </div>
             </div>
             <div class="mt-6 flex flex-wrap gap-3">
-              <button id="start-timer" class="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition flex items-center gap-2">
+              <button id="start-timer" class="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition flex items-center gap-2 theme-start-btn">
                 <i data-lucide="play" class="w-4 h-4"></i>
                 Start Timer
               </button>
@@ -331,10 +320,9 @@
           <div class="p-6 sm:p-8">
             <h4 class="font-display text-lg font-bold text-slate-900 mb-6">Today's Attack Plan</h4>
             <div class="space-y-3" id="checklist">
-              <!-- Checklist items will be inserted by JS -->
             </div>
 
-            <button id="add-task" class="mt-6 w-full py-3 border-2 border-dashed border-slate-300 hover:border-red-500 hover:bg-red-50 text-slate-600 hover:text-red-600 font-medium rounded-xl transition flex items-center justify-center gap-2">
+            <button id="add-task" class="mt-6 w-full py-3 border-2 border-dashed border-slate-300 hover:border-red-500 hover:bg-red-50 text-slate-600 hover:text-red-600 font-medium rounded-xl transition flex items-center justify-center gap-2 theme-add-task">
               <i data-lucide="plus" class="w-5 h-5"></i>
               Add Attack Task
             </button>
@@ -345,7 +333,7 @@
                 <span class="text-sm font-bold text-slate-900" id="progress-text">0/5 Complete</span>
               </div>
               <div class="w-full bg-slate-200 rounded-full h-2.5">
-                <div id="progress-bar" class="bg-gradient-to-r from-red-600 to-amber-500 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                <div id="progress-bar" class="bg-gradient-to-r from-red-600 to-amber-500 h-2.5 rounded-full transition-all duration-500 theme-progress-bar" style="width: 0%"></div>
               </div>
             </div>
           </div>
@@ -355,7 +343,7 @@
   </section>
 
   <!-- CTA -->
-  <section class="py-16 sm:py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+  <section class="py-16 sm:py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white theme-cta-section">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="font-display text-4xl sm:text-5xl font-bold mb-6">
         Your Competition Sleeps In.<br>You Attack.
@@ -363,7 +351,7 @@
       <p class="text-xl text-slate-300 mb-8 leading-relaxed">
         The 5 Hours Rule isn't a hack. It's a weapon. Use it daily, and out-execute everyone in your field.
       </p>
-      <a href="#tracker" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-semibold rounded-xl shadow-lg shadow-red-500/25 transition-all hover:scale-105">
+      <a href="#tracker" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-semibold rounded-xl shadow-lg shadow-red-500/25 transition-all hover:scale-105 theme-cta">
         <i data-lucide="rocket" class="w-5 h-5"></i>
         Activate Your 5 Hours Now
       </a>
@@ -371,11 +359,11 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-white border-t border-slate-200 py-12">
+  <footer class="bg-white border-t border-slate-200 py-12 theme-footer">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
         <div class="flex items-center gap-2">
-          <div class="w-8 h-8 bg-gradient-to-br from-red-600 to-amber-500 rounded-lg flex items-center justify-center">
+          <div class="w-8 h-8 bg-gradient-to-br from-red-600 to-amber-500 rounded-lg flex items-center justify-center theme-logo">
             <i data-lucide="zap" class="w-5 h-5 text-white"></i>
           </div>
           <span class="font-display font-bold text-lg text-slate-900">5H Attack</span>
